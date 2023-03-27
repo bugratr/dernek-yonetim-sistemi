@@ -1,18 +1,68 @@
-import java.util.Date;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.ArrayList;
 
-public class Main {
+public class Main extends JFrame implements ActionListener {
+    // Arayüz elemanları
+    private JButton addButton, listButton;
+    private JLabel titleLabel;
+    private JPanel panel;
+
+    // Üye listesi
+    private ArrayList<Uye> uyeListesi = new ArrayList<>();
+
+    public Main() {
+        // Başlık
+        super("Dernek Üye Yönetim Sistemi");
+
+        // Arayüz elemanları
+        titleLabel = new JLabel("Dernek Üye Yönetim Sistemi", JLabel.CENTER);
+        addButton = new JButton("Yeni Üye Ekle");
+        listButton = new JButton("Üye Listesi");
+
+        // Arayüz düzeni
+        panel = new JPanel();
+        panel.setLayout(new GridLayout(3, 1));
+        panel.add(titleLabel);
+        panel.add(addButton);
+        panel.add(listButton);
+
+        // Arayüz özellikleri
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
+        setContentPane(panel);
+        pack();
+
+        // Olay dinleyicileri
+        addButton.addActionListener(this);
+        listButton.addActionListener(this);
+    }
+
     public static void main(String[] args) {
-        // Üye oluşturma
-        Uye uye = new Uye("Ahmet", "Yılmaz", "İstanbul", "ahmet.yilmaz@example.com", "0555 555 55 55", "2022-01-01");
+        // Arayüzü başlat
+        Main frame = new Main();
+        frame.setVisible(true);
+    }
 
-        // Kayıt oluşturma
-        Date bugun = new Date();
-        Date sonKullanmaTarihi = new Date(bugun.getTime() + 1000 * 60 * 60 * 24 * 30); // 30 gün sonrası
-        Kayit kayit = new Kayit(uye, bugun, sonKullanmaTarihi);
+    // Olay dinleyicisi
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == addButton) {
+            // Yeni üye eklemek için üye formunu aç
+            UyeForm uyeForm = new UyeForm(this);
+            uyeForm.setVisible(true);
+        } else if (e.getSource() == listButton) {
+            // Üye listesini görüntüle
+            String uyeListesiMetni = "";
+            for (Uye uye : uyeListesi) {
+                uyeListesiMetni += "Ad: " + uye.getAd() + ", Soyad: " + uye.getSoyad() + ", Adres: " + uye.getAdres() + ", Eposta: " + uye.getEposta() + ", Telefon: " + uye.getTelefon() + ", Üye Tarihi: " + uye.getUyeTarihi() + "\n";
+            }
+            JOptionPane.showMessageDialog(this, uyeListesiMetni, "Üye Listesi", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
 
-        // Kayıt bilgilerinin yazdırılması
-        System.out.println("Üye Adı: " + kayit.getUye().getAd());
-        System.out.println("Kayıt Tarihi: " + kayit.getKayitTarihi());
-        System.out.println("Son Kullanma Tarihi: " + kayit.getSonKullanmaTarihi());
+    // Yeni üye ekleme
+    public void uyeEkle(Uye uye) {
+        uyeListesi.add(uye);
     }
 }
