@@ -8,6 +8,8 @@ git clone https://github.com/kullaniciadi/dernek-uye-yonetim-sistemi.git
 
 ```
 
+![Gorunum](141CF642-3825-4ECD-A19E-83EA30FFBBA0.jpeg)
+
 Alternatif olarak, projeyi indirmek için sağ üst köşedeki "Code" butonuna tıklayabilirsiniz. "Download ZIP" seçeneğini seçerek, projeyi bilgisayarınıza indirebilirsiniz.
 ## Kullanım
 Proje klonlandıktan veya indirildikten sonra, `src` klasöründe bulunan `.java` dosyalarını derleyerek uygulamayı çalıştırabilirsiniz. Projeyi derlemek ve çalıştırmak için şu adımları izleyebilirsiniz:
