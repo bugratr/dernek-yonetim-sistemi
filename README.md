@@ -4,7 +4,7 @@ Bu proje, derneklerin üye yönetimini kolaylaştırmak için tasarlanmış bir 
 Bu projeyi kullanmak için, öncelikle bilgisayarınızda Java Development Kit (JDK) kurulu olması gerekir. Daha sonra, projeyi klonlayabilir veya indirebilirsiniz. Projeyi klonlamak için aşağıdaki komutu kullanabilirsiniz:
 
 ```
-git clone https://github.com/kullaniciadi/dernek-uye-yonetim-sistemi.git
+git clone https://github.com/bugratr/dernek-uye-yonetim-sistemi.git
 
 ```
 
